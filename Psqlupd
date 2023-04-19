@@ -1,0 +1,22 @@
+from airflow.hooks.postgres_hook import PostgresHook
+
+# Create a PostgresHook instance
+
+postgres_hook = PostgresHook(postgres_conn_id='your_postgres_conn_id')  # replace with your own connection ID
+
+# Define the SQL query to fetch the logs data from the table
+
+sql_query = """
+
+    SELECT * FROM your_logs_table_name;  -- replace with your own logs table name
+
+"""
+
+# Fetch the logs data from the PostgreSQL table
+
+logs_data = postgres_hook.get_records(sql_query)
+
+# Print the logs data
+
+print(logs_data)
+
